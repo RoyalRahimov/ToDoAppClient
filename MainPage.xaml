@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyMauiApp.MainPage"
+             xmlns:viewmodel="clr-namespace:MyMauiApp.ViewModel"
+             x:DataType="viewmodel:TaskViewModel"
+             xmlns:local="clr-namespace:MyMauiApp"
+             BackgroundColor="#F2F2F2">
+
+    <AbsoluteLayout Padding="20"
+                    HorizontalOptions="FillAndExpand">
+
+        <VerticalStackLayout 
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+            AbsoluteLayout.LayoutFlags="All">
+
+            <HorizontalStackLayout Spacing="20"
+                                   HorizontalOptions="FillAndExpand">
+
+                <RadioButton Content="All"
+                             GroupName="TaskFilter"
+                             IsChecked="{Binding SelectedFilter, Mode=OneWay, Converter={StaticResource Converter}, ConverterParameter='All'}"
+                             CheckedChanged="OnFilterChanged"/>
+                <RadioButton Content="Open"
+                             GroupName="TaskFilter"
+                             IsChecked="{Binding SelectedFilter, Mode=OneWay, Converter={StaticResource Converter}, ConverterParameter='Open'}"
+                             CheckedChanged="OnFilterChanged"/>
+                <RadioButton Content="Completed"
+                             GroupName="TaskFilter"
+                             IsChecked="{Binding SelectedFilter, Mode=OneWay, Converter={StaticResource Converter}, ConverterParameter='Completed'}"
+                             CheckedChanged="OnFilterChanged"/>
+            </HorizontalStackLayout>
+
+            <!-- list of to-do tasks -->
+            <CollectionView
+                ItemsSource="{Binding FilteredTasks}"
+                SelectionMode="None"
+                HorizontalOptions="FillAndExpand">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="local:ToDoTask">
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="Delete"
+                                               BackgroundColor="Red"
+                                               IconImageSource="ic_delete.svg"
+                                               Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TaskViewModel}}, Path=DeleteTaskCommand}"
+                                               CommandParameter="{Binding .}"/>
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+
+                            <Frame BackgroundColor="White"
+                                   Padding="15"
+                                   Margin="0,5"
+                                   CornerRadius="10"
+                                   HasShadow="True"
+                                   BorderColor="#DDDDDD"
+                                   HorizontalOptions="FillAndExpand">
+
+                                <Grid ColumnDefinitions="30, *, Auto"
+                                        RowDefinitions="Auto, Auto">
+
+                                    <!-- Priority Color Circle -->
+                                    <Frame BackgroundColor="{Binding TaskPriorityLevel.PriorityColor}"
+                                           CornerRadius="15"
+                                           WidthRequest="15"
+                                           HeightRequest="15"
+                                           Grid.RowSpan="2"
+                                           VerticalOptions="Center"
+                                           HorizontalOptions="Start"/>
+
+                                    <VerticalStackLayout Grid.Column="1"
+                                                         HorizontalOptions="FillAndExpand">
+                                        <!-- Task Title -->
+                                        <Label Text="{Binding Title}"
+                                               FontSize="18"
+                                               FontAttributes="Bold"
+                                               TextColor="Black"
+                                               Margin="10, 0, 0, 0"/>
+
+                                        <!-- Task Description -->
+                                        <Label Text="{Binding Description}"
+                                               FontSize="12"
+                                               TextColor="Gray"
+                                               Margin="10, 0, 0, 0"/>
+
+                                        <!-- Due Date and Time -->
+                                        <HorizontalStackLayout Margin="10, 5, 0, 0">
+                                            <Label Text="{Binding DueDate, StringFormat='{}{0:MMM d, yyyy}'}"
+                                                   FontSize="12"
+                                                   TextColor="Gray"/>
+
+                                            <Label Text="{Binding DueTime, StringFormat='{}{0:hh\\:mm}'}"
+                                                   FontSize="12"
+                                                   TextColor="Gray"
+                                                   Margin="10, 0, 0, 0"/>
+                                        </HorizontalStackLayout>
+                                    </VerticalStackLayout>
+
+                                    <HorizontalStackLayout Grid.Column="2">
+                                        <!-- Update Icon -->
+                                        <ImageButton Source="ic_edit.svg"
+                                                     Grid.Column="2"
+                                                     WidthRequest="24"
+                                                     HeightRequest="24"
+                                                     VerticalOptions="Center"
+                                                     Clicked="OnUpdateTaskClicked"
+                                                     CommandParameter="{Binding .}"/>
+
+                                        <!-- Checkbox to Mark Task as Completed -->
+                                        <CheckBox IsChecked="{Binding IsDone, Mode=OneWay}"
+                                                  Grid.Column="3"
+                                                  Color="Green"
+                                                  VerticalOptions="Center"
+                                                  CheckedChanged="CheckBox_CheckedChanged"/>
+                                    </HorizontalStackLayout>
+
+                                </Grid>
+                            </Frame>
+
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+
+        <!-- New task button -->
+        <Button Text="+"
+                Clicked="OnAddTaskClicked"
+                FontSize="28"
+                TextColor="White"
+                BackgroundColor="Green"
+                CornerRadius="30"
+                WidthRequest="60"
+                HeightRequest="60"
+                AbsoluteLayout.LayoutBounds="1,1"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                VerticalOptions="End"
+                HorizontalOptions="End"/>
+    </AbsoluteLayout>
+
+</ContentPage>

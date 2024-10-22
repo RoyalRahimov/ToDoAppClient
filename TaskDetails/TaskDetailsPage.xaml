@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyMauiApp.CreateTask.TaskDetailsPage"
+             Title="Task Details"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
+             xmlns:viewmodel="clr-namespace:MyMauiApp.ViewModel"
+             x:DataType="viewmodel:TaskDetailsViewModel">
+
+    <VerticalStackLayout Padding="20"
+                         Spacing="15">
+        <Label Text="Task Details"
+               FontSize="24"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"/>
+
+        <Entry Placeholder="Enter Task Title"
+               Text="{Binding TaskTitle}"
+               FontSize="18"
+               MaxLength="40"/>
+
+        <!-- Task Description -->
+        <Editor Placeholder="Enter Task Description"
+                Text="{Binding TaskDescription}"
+                FontSize="16"
+                MaxLength="400"
+                AutoSize="TextChanges"
+                MinimumHeightRequest="60"/>
+
+        <!-- Static "Select Priority" Label -->
+        <Label Text="Select Task Priority"
+               FontSize="16"
+               TextColor="Black"
+               VerticalOptions="Center"
+               HorizontalOptions="Start">
+            <!-- Tap Gesture to open Picker -->
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnPriorityLabelTapped"/>
+            </Label.GestureRecognizers>
+        </Label>
+
+        <!-- Hidden Picker -->
+        <Picker x:Name="priorityPicker"
+                Title="Priority Picker"
+                ItemsSource="{Binding PriorityList}"
+                SelectedItem="{Binding TaskPriority}"
+                ItemDisplayBinding="{Binding Name}"
+                IsVisible="False"
+                SelectedIndexChanged="OnPrioritySelected"/>
+
+        <!-- Selected Priority Display with Color Circle -->
+        <HorizontalStackLayout Spacing="10"
+                               VerticalOptions="Center">
+
+            <!-- Round color indicator for selected priority -->
+            <Frame BackgroundColor="{Binding TaskPriority.Color}"
+                   WidthRequest="20"
+                   HeightRequest="20"
+                   CornerRadius="10"
+                   VerticalOptions="Center"/>
+
+            <!-- Selected priority title -->
+            <Label Text="{Binding TaskPriority.Name}"
+                   FontSize="18"
+                   VerticalOptions="Center"/>
+        </HorizontalStackLayout>
+
+        <!-- Date Picker -->
+        <DatePicker Date="{Binding DueDate}"
+                    Format="D"
+                    MinimumDate="{x:Static sys:DateTime.Now}"
+                    FontSize="18"
+                    Margin="0,10,0,0"/>
+
+        <!-- Time Picker -->
+        <TimePicker Time="{Binding DueTime}"
+                    FontSize="18"
+                    Margin="0,10,0,0"/>
+
+        <!-- Save Button -->
+        <Button Text="Save Task"
+                Clicked="OnSaveTaskClicked"
+                BackgroundColor="Green"
+                TextColor="White"
+                FontAttributes="Bold"
+                CornerRadius="10"
+                Padding="10"/>
+    </VerticalStackLayout>
+</ContentPage>

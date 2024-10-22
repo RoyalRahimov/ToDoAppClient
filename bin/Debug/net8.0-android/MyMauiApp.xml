@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MyMauiApp</name>
+    </assembly>
+    <members>
+        <member name="P:MyMauiApp.ToDoTask.Id">
+            <inheritdoc cref="F:MyMauiApp.ToDoTask.id"/>
+        </member>
+        <member name="P:MyMauiApp.ToDoTask.Title">
+            <inheritdoc cref="F:MyMauiApp.ToDoTask.title"/>
+        </member>
+        <member name="P:MyMauiApp.ToDoTask.Description">
+            <inheritdoc cref="F:MyMauiApp.ToDoTask.description"/>
+        </member>
+        <member name="P:MyMauiApp.ToDoTask.IsDone">
+            <inheritdoc cref="F:MyMauiApp.ToDoTask.isDone"/>
+        </member>
+        <member name="P:MyMauiApp.ToDoTask.TaskPriorityLevel">
+            <inheritdoc cref="F:MyMauiApp.ToDoTask.taskPriorityLevel"/>
+        </member>
+        <member name="P:MyMauiApp.ToDoTask.DueDate">
+            <inheritdoc cref="F:MyMauiApp.ToDoTask.dueDate"/>
+        </member>
+        <member name="P:MyMauiApp.ToDoTask.DueTime">
+            <inheritdoc cref="F:MyMauiApp.ToDoTask.dueTime"/>
+        </member>
+        <member name="P:MyMauiApp.TaskPriorityLevel.PriorityName">
+            <inheritdoc cref="F:MyMauiApp.TaskPriorityLevel.priorityName"/>
+        </member>
+        <member name="P:MyMauiApp.TaskPriorityLevel.PriorityColor">
+            <inheritdoc cref="F:MyMauiApp.TaskPriorityLevel.priorityColor"/>
+        </member>
+        <member name="P:MyMauiApp.ViewModel.TaskDetailsViewModel.TaskId">
+            <inheritdoc cref="F:MyMauiApp.ViewModel.TaskDetailsViewModel.taskId"/>
+        </member>
+        <member name="P:MyMauiApp.ViewModel.TaskDetailsViewModel.TaskTitle">
+            <inheritdoc cref="F:MyMauiApp.ViewModel.TaskDetailsViewModel.taskTitle"/>
+        </member>
+        <member name="P:MyMauiApp.ViewModel.TaskDetailsViewModel.TaskDescription">
+            <inheritdoc cref="F:MyMauiApp.ViewModel.TaskDetailsViewModel.taskDescription"/>
+        </member>
+        <member name="P:MyMauiApp.ViewModel.TaskDetailsViewModel.TaskPriority">
+            <inheritdoc cref="F:MyMauiApp.ViewModel.TaskDetailsViewModel.taskPriority"/>
+        </member>
+        <member name="P:MyMauiApp.ViewModel.TaskDetailsViewModel.IsTaskCompleted">
+            <inheritdoc cref="F:MyMauiApp.ViewModel.TaskDetailsViewModel.isTaskCompleted"/>
+        </member>
+        <member name="P:MyMauiApp.ViewModel.TaskDetailsViewModel.DueDate">
+            <inheritdoc cref="F:MyMauiApp.ViewModel.TaskDetailsViewModel.dueDate"/>
+        </member>
+        <member name="P:MyMauiApp.ViewModel.TaskDetailsViewModel.DueTime">
+            <inheritdoc cref="F:MyMauiApp.ViewModel.TaskDetailsViewModel.dueTime"/>
+        </member>
+        <member name="P:MyMauiApp.ViewModel.TaskViewModel.Tasks">
+            <inheritdoc cref="F:MyMauiApp.ViewModel.TaskViewModel.tasks"/>
+        </member>
+        <member name="P:MyMauiApp.ViewModel.TaskViewModel.FilteredTasks">
+            <inheritdoc cref="F:MyMauiApp.ViewModel.TaskViewModel.filteredTasks"/>
+        </member>
+        <member name="P:MyMauiApp.ViewModel.TaskViewModel.SelectedFilter">
+            <inheritdoc cref="F:MyMauiApp.ViewModel.TaskViewModel.selectedFilter"/>
+        </member>
+        <member name="M:MyMauiApp.ViewModel.TaskViewModel.OnSelectedFilterChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:MyMauiApp.ViewModel.TaskViewModel.SelectedFilter"/> just changed.</summary>
+        </member>
+        <member name="F:MyMauiApp.ViewModel.TaskViewModel.deleteTaskCommand">
+            <summary>The backing field for <see cref="P:MyMauiApp.ViewModel.TaskViewModel.DeleteTaskCommand"/>.</summary>
+        </member>
+        <member name="P:MyMauiApp.ViewModel.TaskViewModel.DeleteTaskCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MyMauiApp.ViewModel.TaskViewModel.DeleteTask(MyMauiApp.ToDoTask)"/>.</summary>
+        </member>
+        <member name="F:MyMauiApp.ViewModel.TaskViewModel.updateTaskCommand">
+            <summary>The backing field for <see cref="P:MyMauiApp.ViewModel.TaskViewModel.UpdateTaskCommand"/>.</summary>
+        </member>
+        <member name="P:MyMauiApp.ViewModel.TaskViewModel.UpdateTaskCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MyMauiApp.ViewModel.TaskViewModel.UpdateTask(MyMauiApp.ToDoTask)"/>.</summary>
+        </member>
+    </members>
+</doc>
