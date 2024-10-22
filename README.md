@@ -22,3 +22,7 @@ See screenshots:
 ![completed tasks](https://github.com/user-attachments/assets/07efad31-cbcd-4a0c-835d-b292eb374e68)
 
 ![delete](https://github.com/user-attachments/assets/da4bbe0f-8472-4a15-8388-0a331cda07b1)
+
+Gif with use case is attached:
+
+![use case](https://github.com/user-attachments/assets/2cda1eb8-9808-402c-8ec0-d893932772ed)
